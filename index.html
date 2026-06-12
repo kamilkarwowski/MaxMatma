@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renata Karwowska — Korepetycje z matematyki</title>
+<title>MaxMatma — Korepetycje z matematyki | Renata Karwowska</title>
+<meta name="description" content="Korepetycje z matematyki z 25-letnim doświadczeniem. Przygotowanie do egzaminu ósmoklasisty i matury, poprawa ocen, zajęcia indywidualne i online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,6 +16,7 @@
     --line:#e4e0d6;
     --accent:#2f6d5b;
     --accent-soft:#eaf1ee;
+    --orange:#f08a24;
     --max:1080px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -30,6 +32,13 @@
   a{color:inherit}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
+  /* Logo */
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .logo svg{display:block;flex:none}
+  .logo .word{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;letter-spacing:-.02em;line-height:1}
+  .logo .word b{color:var(--ink);font-weight:600}
+  .logo .word span{color:var(--orange);font-weight:600}
+
   /* Header */
   header{
     position:sticky;top:0;z-index:50;
@@ -37,9 +46,7 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;letter-spacing:-.02em;text-decoration:none}
-  .brand span{color:var(--accent)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
   .menu{display:flex;gap:30px;list-style:none}
   .menu a{text-decoration:none;font-size:.92rem;color:var(--ink-soft);transition:color .2s}
   .menu a:hover{color:var(--ink)}
@@ -91,7 +98,6 @@
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .card{background:#fff;padding:32px 28px;transition:background .2s}
   .card:hover{background:var(--accent-soft)}
-  .card .ix{font-family:'Fraunces',serif;font-size:.95rem;color:var(--accent);font-weight:600;margin-bottom:14px;display:block}
   .card h3{font-size:1.22rem;margin-bottom:10px}
   .card p{font-size:.95rem;color:var(--ink-soft)}
 
@@ -138,29 +144,40 @@
   .quote .body{font-size:.94rem;color:var(--ink-soft);margin-bottom:16px}
   .quote .who{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
 
-  /* CTA */
+  /* Contact */
   .cta-band{background:var(--ink);color:#fff;text-align:center;padding:80px 24px}
   .cta-band h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:18px;color:#fff}
   .cta-band p{color:#b9c4d1;font-size:1.08rem;max-width:50ch;margin:0 auto 32px}
-  .cta-band .btn-primary{background:#fff;color:var(--ink)}
-  .cta-band .btn-primary:hover{background:#e9e5db}
+  .contact-methods{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+  .contact-pill{
+    display:flex;align-items:center;gap:10px;text-decoration:none;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    color:#fff;padding:14px 22px;border-radius:10px;font-size:1.02rem;font-weight:500;
+    transition:.2s;
+  }
+  .contact-pill:hover{background:rgba(255,255,255,.14)}
+  .contact-pill svg{flex:none}
+  .cta-band .socials{display:flex;gap:18px;justify-content:center;font-size:.92rem}
+  .cta-band .socials a{color:#b9c4d1;text-decoration:none;transition:color .2s}
+  .cta-band .socials a:hover{color:#fff}
 
   /* Footer */
   footer{padding:56px 0 40px;font-size:.92rem;color:var(--ink-soft)}
   .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-  .foot-brand{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--ink);font-weight:600;margin-bottom:12px}
   footer h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:600}
   footer ul{list-style:none}
   footer ul li{margin-bottom:10px}
   footer a{text-decoration:none;transition:color .2s}
   footer a:hover{color:var(--accent)}
+  .foot-logo{margin-bottom:14px}
+  .foot-grid > div > p{max-width:34ch}
+  .areas{color:var(--ink);font-weight:500;margin-top:14px}
   .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
-  .areas{color:var(--ink);font-weight:500}
 
   @media(max-width:860px){
     .menu,.nav-cta{display:none}
     .burger{display:block}
-    .menu.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 24px;gap:18px}
+    .menu.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 24px;gap:18px}
     .stats-grid{grid-template-columns:1fr}
     .stat{border-right:0;border-bottom:1px solid var(--line)}
     .stat:last-child{border-bottom:0}
@@ -176,7 +193,16 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#" class="brand">max<span>matma</span></a>
+    <a href="index.html" class="logo" aria-label="MaxMatma — strona główna">
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" rx="11" fill="#1c2733"/>
+        <path d="M24 11L37 16.5L24 22L11 16.5L24 11Z" fill="#fbfaf7"/>
+        <path d="M16 19.5V25.5C16 25.5 19 28 24 28C29 28 32 25.5 32 25.5V19.5" stroke="#fbfaf7" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M37 16.5V24" stroke="#f08a24" stroke-width="2.1" stroke-linecap="round"/>
+        <circle cx="37" cy="26.5" r="1.7" fill="#f08a24"/>
+      </svg>
+      <span class="word"><b>Max</b><span>Matma</span></span>
+    </a>
     <nav>
       <ul class="menu" id="menu">
         <li><a href="#oferta">Zajęcia</a></li>
@@ -340,11 +366,24 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CONTACT -->
   <section class="cta-band" id="kontakt">
-    <h2>Masz pytanie? Napisz do mnie.</h2>
+    <h2>Masz pytanie? Napisz lub zadzwoń.</h2>
     <p>Chętnie pomogę dobrać odpowiednią formę korepetycji — indywidualnie lub w małej grupie online.</p>
-    <a href="mailto:kontakt@maxmatma.pl" class="btn btn-primary">Napisz wiadomość</a>
+    <div class="contact-methods">
+      <a href="tel:+48510277326" class="contact-pill">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2 2A16 16 0 014.5 6a2 2 0 012-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        510 277 326
+      </a>
+      <a href="mailto:renatakarwowska@o2.pl" class="contact-pill">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        renatakarwowska@o2.pl
+      </a>
+    </div>
+    <div class="socials">
+      <a href="https://www.facebook.com/profile.php?id=61578859084205" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@RENATA-maxmatma" target="_blank" rel="noopener">YouTube</a>
+    </div>
   </section>
 
 </main>
@@ -353,9 +392,18 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">max<span style="color:var(--accent)">matma</span></div>
-        <p style="max-width:34ch">Korepetycje z matematyki dla uczniów szkół podstawowych i średnich. Stacjonarnie oraz online.</p>
-        <p class="areas" style="margin-top:14px">Kędziorowo · Szczuczyn · Grajewo · Białystok</p>
+        <a href="index.html" class="logo foot-logo" aria-label="MaxMatma">
+          <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="11" fill="#1c2733"/>
+            <path d="M24 11L37 16.5L24 22L11 16.5L24 11Z" fill="#fbfaf7"/>
+            <path d="M16 19.5V25.5C16 25.5 19 28 24 28C29 28 32 25.5 32 25.5V19.5" stroke="#fbfaf7" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M37 16.5V24" stroke="#f08a24" stroke-width="2.1" stroke-linecap="round"/>
+            <circle cx="37" cy="26.5" r="1.7" fill="#f08a24"/>
+          </svg>
+          <span class="word"><b>Max</b><span>Matma</span></span>
+        </a>
+        <p>Korepetycje z matematyki dla uczniów szkół podstawowych i średnich. Stacjonarnie oraz online.</p>
+        <p class="areas">Kędziorowo · Szczuczyn · Grajewo · Białystok</p>
       </div>
       <div>
         <h4>Nawigacja</h4>
@@ -369,15 +417,17 @@
       <div>
         <h4>Kontakt</h4>
         <ul>
-          <li><a href="mailto:kontakt@maxmatma.pl">kontakt@maxmatma.pl</a></li>
+          <li><a href="tel:+48510277326">510 277 326</a></li>
+          <li><a href="mailto:renatakarwowska@o2.pl">renatakarwowska@o2.pl</a></li>
           <li><a href="https://www.facebook.com/profile.php?id=61578859084205" target="_blank" rel="noopener">Facebook</a></li>
           <li><a href="https://www.youtube.com/@RENATA-maxmatma" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Renata Karwowska · maxmatma.pl</span>
-      <a href="#">Polityka prywatności</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
     </div>
   </div>
 </footer>
