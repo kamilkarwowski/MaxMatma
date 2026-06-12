@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renata Karwowska — Korepetycje z matematyki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2733;
+    --ink-soft:#48566a;
+    --paper:#fbfaf7;
+    --line:#e4e0d6;
+    --accent:#2f6d5b;
+    --accent-soft:#eaf1ee;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,247,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;letter-spacing:-.02em;text-decoration:none}
+  .brand span{color:var(--accent)}
+  .menu{display:flex;gap:30px;list-style:none}
+  .menu a{text-decoration:none;font-size:.92rem;color:var(--ink-soft);transition:color .2s}
+  .menu a:hover{color:var(--ink)}
+  .nav-cta{
+    text-decoration:none;font-size:.9rem;font-weight:500;
+    background:var(--accent);color:#fff;
+    padding:9px 18px;border-radius:6px;transition:background .2s;
+  }
+  .nav-cta:hover{background:#27594a}
+  .burger{display:none;background:none;border:0;cursor:pointer;font-size:1.5rem;color:var(--ink)}
+
+  /* Hero */
+  .hero{padding:96px 0 72px}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.4rem,6vw,4rem);max-width:14ch;margin-bottom:24px}
+  .hero p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:54ch;margin-bottom:14px}
+  .hero p.sub{font-size:1rem;color:var(--ink);font-weight:500;max-width:54ch;margin-bottom:34px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    text-decoration:none;font-size:.98rem;font-weight:500;
+    padding:13px 26px;border-radius:7px;transition:.2s;display:inline-block;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#27594a}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);background:#fff}
+  .rating{display:flex;align-items:center;gap:8px;margin-left:6px;font-size:.9rem;color:var(--ink-soft)}
+  .stars{color:#d8a23a;letter-spacing:2px}
+
+  /* Stats */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+  .stat{padding:40px 24px;text-align:center;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .num{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--accent);line-height:1}
+  .stat .lbl{font-size:.92rem;color:var(--ink-soft);margin-top:10px}
+
+  /* Sections */
+  section.block{padding:84px 0}
+  .section-head{max-width:60ch;margin-bottom:48px}
+  .section-head .eyebrow{margin-bottom:16px}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:16px}
+  .section-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* Offer cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .card{background:#fff;padding:32px 28px;transition:background .2s}
+  .card:hover{background:var(--accent-soft)}
+  .card .ix{font-family:'Fraunces',serif;font-size:.95rem;color:var(--accent);font-weight:600;margin-bottom:14px;display:block}
+  .card h3{font-size:1.22rem;margin-bottom:10px}
+  .card p{font-size:.95rem;color:var(--ink-soft)}
+
+  /* About */
+  .about{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .about h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:22px;max-width:18ch}
+  .about p{color:var(--ink-soft);margin-bottom:18px;font-size:1.02rem}
+  .about p strong{color:var(--ink);font-weight:600}
+  .process{list-style:none;counter-reset:step}
+  .process li{
+    counter-increment:step;
+    display:flex;gap:18px;align-items:flex-start;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .process li:last-child{border-bottom:0}
+  .process li::before{
+    content:counter(step);
+    font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;
+    flex:none;width:34px;height:34px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent);
+    display:grid;place-items:center;
+  }
+  .process .pt{font-weight:600;font-size:1rem}
+  .process .pd{font-size:.92rem;color:var(--ink-soft)}
+
+  /* Courses */
+  .course-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .course{
+    background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:22px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    transition:.2s;text-decoration:none;
+  }
+  .course:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .course .lvl{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .course h3{font-size:1.05rem;margin-top:4px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0}
+  .course .arrow{color:var(--ink-soft);font-size:1.2rem;flex:none}
+
+  /* Testimonials */
+  .testimonials{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .quote{padding:28px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+  .quote .q{font-family:'Fraunces',serif;font-size:1.12rem;color:var(--ink);margin-bottom:14px;line-height:1.4}
+  .quote .body{font-size:.94rem;color:var(--ink-soft);margin-bottom:16px}
+  .quote .who{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+  /* CTA */
+  .cta-band{background:var(--ink);color:#fff;text-align:center;padding:80px 24px}
+  .cta-band h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:18px;color:#fff}
+  .cta-band p{color:#b9c4d1;font-size:1.08rem;max-width:50ch;margin:0 auto 32px}
+  .cta-band .btn-primary{background:#fff;color:var(--ink)}
+  .cta-band .btn-primary:hover{background:#e9e5db}
+
+  /* Footer */
+  footer{padding:56px 0 40px;font-size:.92rem;color:var(--ink-soft)}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  .foot-brand{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--ink);font-weight:600;margin-bottom:12px}
+  footer h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;font-family:'Inter',sans-serif;font-weight:600}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px}
+  footer a{text-decoration:none;transition:color .2s}
+  footer a:hover{color:var(--accent)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
+  .areas{color:var(--ink);font-weight:500}
+
+  @media(max-width:860px){
+    .menu,.nav-cta{display:none}
+    .burger{display:block}
+    .menu.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);padding:18px 24px;gap:18px}
+    .stats-grid{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
+    .cards,.course-list,.quote-grid{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .hero{padding:64px 0 48px}
+    section.block{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">max<span>matma</span></a>
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="#oferta">Zajęcia</a></li>
+        <li><a href="#omnie">O mnie</a></li>
+        <li><a href="#kursy">Kursy</a></li>
+        <li><a href="#opinie">Opinie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="#kontakt" class="nav-cta">Zapisz się</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Korepetycje z matematyki · 25 lat doświadczenia</span>
+      <h1>Matematyka, którą naprawdę da się zrozumieć</h1>
+      <p class="lead">Od 25 lat pomagam uczniom oswajać matematykę, poprawiać oceny i przygotowywać się do egzaminów. Uczę jasno, cierpliwie i konkretnie.</p>
+      <p class="sub">Doświadczenie, które przekłada się na wyniki. Podejście, które daje pewność.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Umów zajęcia</a>
+        <a href="#oferta" class="btn btn-ghost">Zobacz, jak uczę</a>
+        <span class="rating"><span class="stars">★★★★★</span> 5,0 / 5</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><div class="num">25</div><div class="lbl">lat doświadczenia w nauczaniu</div></div>
+      <div class="stat"><div class="num">500+</div><div class="lbl">uczniów przygotowanych do egzaminów</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">zajęć prowadzonych osobiście</div></div>
+    </div>
+  </div>
+
+  <!-- OFFER -->
+  <section class="block" id="oferta">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Zajęcia</span>
+        <h2>Wieloletnie doświadczenie. Realne efekty. Indywidualne podejście.</h2>
+        <p>Matematyka nie musi być źródłem stresu. Często problem nie leży w braku zdolności ucznia, ale w sposobie tłumaczenia materiału — dlatego każde zagadnienie wyjaśniam krok po kroku, dopasowując tempo do ucznia.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Poprawa ocen i zaległości</h3>
+          <p>Porządkujemy materiał, wracamy do podstaw i ćwiczymy zagadnienia, które sprawiają największą trudność.</p>
+        </div>
+        <div class="card">
+          <h3>Egzamin ósmoklasisty</h3>
+          <p>Pracujemy na zadaniach i arkuszach z poprzednich lat, aby uczeń nabrał pewności i wiedział, czego się spodziewać.</p>
+        </div>
+        <div class="card">
+          <h3>Przygotowanie do matury</h3>
+          <p>Przygotowanie z matematyki na poziomie podstawowym i rozszerzonym, zgodnie z wymaganiami egzaminacyjnymi.</p>
+        </div>
+        <div class="card">
+          <h3>Zajęcia indywidualne</h3>
+          <p>Dla uczniów, którzy potrzebują pełnej uwagi nauczyciela i planu dopasowanego wyłącznie do ich potrzeb.</p>
+        </div>
+        <div class="card">
+          <h3>Zajęcia grupowe online</h3>
+          <p>Zdalna nauka w małych grupach — tańsza, a jednocześnie bardzo efektywna forma. Cena zależy od wielkości grupy.</p>
+        </div>
+        <div class="card">
+          <h3>Systematyczna nauka</h3>
+          <p>Regularna praca utrwala materiał, zmniejsza stres przed sprawdzianami i buduje pewność siebie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about block" id="omnie">
+    <div class="wrap about-grid">
+      <div>
+        <span class="eyebrow">O mnie</span>
+        <h2>Uczę tak, jak sama chciałabym, by uczono moje dzieci</h2>
+        <p>Jestem nauczycielką matematyki z <strong>25-letnim doświadczeniem</strong>. Przez lata pracy przekonałam się, że każdy może zrozumieć matematykę — potrzebuje tylko właściwego sposobu tłumaczenia, cierpliwości i dobrze dobranych ćwiczeń.</p>
+        <p>Pomagam uczniom osiągać różne cele: od poprawy ocen, przez nadrobienie zaległości, aż po przygotowanie do egzaminu ósmoklasisty i matury — podstawowej oraz rozszerzonej.</p>
+        <p>Stawiam na jasne wyjaśnienia, rzetelność i spokojną atmosferę. Tłumaczę krok po kroku, tak aby uczeń nie tylko zapamiętał schemat, ale <strong>naprawdę zrozumiał, co robi</strong>.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Jak pracujemy</span>
+        <h2 style="font-size:1.5rem;margin-bottom:20px;max-width:none">Plan nauki dopasowany do ucznia</h2>
+        <ol class="process">
+          <li><div><div class="pt">Diagnoza poziomu</div><div class="pd">Sprawdzam, co idzie dobrze, a co wymaga dodatkowej pracy.</div></div></li>
+          <li><div><div class="pt">Indywidualny plan działania</div><div class="pd">Tworzę plan dopasowany do celu konkretnego ucznia.</div></div></li>
+          <li><div><div class="pt">Jasne tłumaczenie zagadnień</div><div class="pd">Każdy temat krok po kroku, bez pośpiechu.</div></div></li>
+          <li><div><div class="pt">Ćwiczenie w praktyce</div><div class="pd">Utrwalanie wiedzy na realnych zadaniach.</div></div></li>
+          <li><div><div class="pt">Praca na arkuszach egzaminacyjnych</div><div class="pd">Przygotowanie do tego, co czeka na egzaminie.</div></div></li>
+          <li><div><div class="pt">Systematyczne utrwalanie</div><div class="pd">Regularne powtórki budujące pewność siebie.</div></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section class="block" id="kursy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Kursy</span>
+        <h2>Kursy matematyki według poziomu</h2>
+        <p>Uporządkowany program dla każdego etapu — od szkoły podstawowej po liceum i technikum.</p>
+      </div>
+      <div class="course-list">
+        <a class="course" href="#kontakt"><div><span class="lvl">Podstawówka</span><h3>Klasa V</h3></div><span class="arrow">→</span></a>
+        <a class="course" href="#kontakt"><div><span class="lvl">Podstawówka</span><h3>Klasa VI</h3></div><span class="arrow">→</span></a>
+        <a class="course" href="#kontakt"><div><span class="lvl">Podstawówka</span><h3>Klasa VII</h3></div><span class="arrow">→</span></a>
+        <a class="course" href="#kontakt"><div><span class="lvl">Podstawówka</span><h3>Klasa VIII</h3></div><span class="arrow">→</span></a>
+        <a class="course" href="#kontakt"><div><span class="lvl">LO / Technikum</span><h3>Klasa I</h3></div><span class="arrow">→</span></a>
+        <a class="course" href="#kontakt"><div><span class="lvl">LO / Technikum</span><h3>Klasa II</h3></div><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials block" id="opinie">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Opinie · 5,0 / 5</span>
+        <h2>Co mówią moi uczniowie</h2>
+      </div>
+      <div class="quote-grid">
+        <div class="quote">
+          <p class="q">„Matematyka przestała być dla mnie problemem.”</p>
+          <p class="body">Dzięki spokojnym tłumaczeniom i regularnym ćwiczeniom zacząłem lepiej rozumieć zadania. Mogłem pytać o wszystko, bez stresu.</p>
+          <p class="who">Uczeń</p>
+        </div>
+        <div class="quote">
+          <p class="q">„Widzimy realną poprawę i większą pewność siebie.”</p>
+          <p class="body">Po kilku zajęciach dziecko spokojniej podchodzi do matematyki. Materiał jest tłumaczony jasno, a nauka idzie według konkretnego planu.</p>
+          <p class="who">Rodzic</p>
+        </div>
+        <div class="quote">
+          <p class="q">„Przygotowania do matury stały się uporządkowane.”</p>
+          <p class="body">Praca na arkuszach, omawianie typowych zadań i powrót do trudniejszych tematów bardzo pomogły. Wiedziałem, nad czym pracować.</p>
+          <p class="who">Maturzysta</p>
+        </div>
+        <div class="quote">
+          <p class="q">„Na egzaminie czułem się pewniej.”</p>
+          <p class="body">Rozwiązywaliśmy dużo zadań egzaminacyjnych i omawialiśmy błędy. Łatwiej było zrozumieć, jak podejść do różnych typów zadań.</p>
+          <p class="who">Ósmoklasista</p>
+        </div>
+        <div class="quote">
+          <p class="q">„Cierpliwość i indywidualne podejście robią różnicę.”</p>
+          <p class="body">Najbardziej doceniamy spokojną atmosferę i dopasowanie tempa do dziecka. Widać plan, doświadczenie i zaangażowanie.</p>
+          <p class="who">Rodzic</p>
+        </div>
+        <div class="quote">
+          <p class="q">„W końcu ktoś wytłumaczył mi matematykę krok po kroku.”</p>
+          <p class="body">Wcześniej wiele tematów wydawało się zbyt trudnych. Teraz wiem, od czego zacząć i jak unikać najczęstszych błędów.</p>
+          <p class="who">Uczeń</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" id="kontakt">
+    <h2>Masz pytanie? Napisz do mnie.</h2>
+    <p>Chętnie pomogę dobrać odpowiednią formę korepetycji — indywidualnie lub w małej grupie online.</p>
+    <a href="mailto:kontakt@maxmatma.pl" class="btn btn-primary">Napisz wiadomość</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">max<span style="color:var(--accent)">matma</span></div>
+        <p style="max-width:34ch">Korepetycje z matematyki dla uczniów szkół podstawowych i średnich. Stacjonarnie oraz online.</p>
+        <p class="areas" style="margin-top:14px">Kędziorowo · Szczuczyn · Grajewo · Białystok</p>
+      </div>
+      <div>
+        <h4>Nawigacja</h4>
+        <ul>
+          <li><a href="#oferta">Zajęcia</a></li>
+          <li><a href="#omnie">O mnie</a></li>
+          <li><a href="#kursy">Kursy</a></li>
+          <li><a href="#opinie">Opinie</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:kontakt@maxmatma.pl">kontakt@maxmatma.pl</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61578859084205" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@RENATA-maxmatma" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Renata Karwowska · maxmatma.pl</span>
+      <a href="#">Polityka prywatności</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger=document.getElementById('burger');
+  const menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+</script>
+</body>
+</html>
